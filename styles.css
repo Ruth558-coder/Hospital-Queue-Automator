@@ -1,0 +1,263 @@
+/* Smart Queue Dashboard Styles */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Header Styles */
+.hospital-header {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #28a745;
+}
+
+/* Patient Card Styles */
+.patient-card {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.patient-card.waiting {
+    border-left-color: #ffc107;
+    background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+}
+
+.patient-card.serving {
+    border-left-color: #17a2b8;
+    background: linear-gradient(135deg, #e6f7ff 0%, #ffffff 100%);
+    animation: pulse-serving 2s infinite;
+}
+
+.patient-card.done {
+    border-left-color: #28a745;
+    background: linear-gradient(135deg, #e8f5e8 0%, #ffffff 100%);
+    opacity: 0.8;
+}
+
+.patient-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes pulse-serving {
+    0% { box-shadow: 0 0 0 0 rgba(23, 162, 184, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(23, 162, 184, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(23, 162, 184, 0); }
+}
+
+/* Queue Number Badge */
+.queue-number {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.queue-number.waiting { background-color: #ffc107; }
+.queue-number.serving { background-color: #17a2b8; }
+.queue-number.done { background-color: #28a745; }
+
+/* Status Badge */
+.status-badge {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.375rem 0.75rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.waiting {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status-badge.serving {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.status-badge.done {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Service Type Badge */
+.service-badge {
+    background-color: #6c757d;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.service-badge.Consultation { background-color: #007bff; }
+.service-badge.Lab { background-color: #6610f2; }
+.service-badge.Pharmacy { background-color: #fd7e14; }
+
+/* Statistics Styles */
+.stat-box {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-2px);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* Filter Buttons */
+.filter-btn.active {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: white !important;
+}
+
+/* Action Buttons */
+.action-btn {
+    min-width: 100px;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hospital-header h1 {
+        font-size: 1.25rem !important;
+    }
+    
+    .queue-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .patient-card .card-body {
+        padding: 1rem;
+    }
+    
+    .btn-group .btn {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hospital-header .row {
+        text-align: center !important;
+    }
+    
+    .hospital-header .col-md-6 {
+        margin-bottom: 0.5rem;
+    }
+    
+    .queue-number {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+    }
+    
+    .stat-number {
+        font-size: 1.25rem;
+    }
+    
+    .stat-label {
+        font-size: 0.75rem;
+    }
+}
+
+/* Large Display Optimizations */
+@media (min-width: 1400px) {
+    .patient-card {
+        font-size: 1.1rem;
+    }
+    
+    .queue-number {
+        width: 100px;
+        height: 100px;
+        font-size: 2.5rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+    }
+    
+    .btn {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+/* Animation for new patients */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.patient-card.new-patient {
+    animation: slideIn 0.5s ease-out;
+}
+
+/* Auto-advance indicator */
+.auto-advance-active {
+    background-color: #d4edda !important;
+    border-color: #28a745 !important;
+    color: #155724 !important;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Print styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    
+    .patient-card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
